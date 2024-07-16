@@ -6,7 +6,7 @@ export default function LoadMoreBtn({handleLoadMore}) {
 
   return (
     <div className={css.container}>
-      <button onClick={handleLoadMore}>Load more...</button >
+      <button className={css.button} onClick={handleLoadMore}>Load more...</button >
     </div>
   );
 }
