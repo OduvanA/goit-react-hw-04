@@ -8,7 +8,7 @@ export default function SearchBar({ onSubmit }) {
     event.preventDefault();
     const value = event.target.elements.searchBar.value.trim();
     if (!value) {
-      toast('Please enter your query', {
+      toast('!!!   Please enter your query', {
         duration: 2000,
         position: 'top-right',
       });

@@ -44,16 +44,16 @@ export default function App() {
   };
 
   useEffect(() => {
-    if (!search) {
+    if (search === "") {
       return;
     }
     async function getGallery() {
       try {
         setLoading(true);
         const data = await fetchGallery(search, page);
-        setGallery((currentGallery) => [...currentGallery, ...data.results]);
         setTotalPages(data.total_pages);
-        setShowBtn(totalPages && totalPages !== page);
+        setGallery((currentGallery) => [...currentGallery, ...data.results]);
+        setShowBtn(totalPages && (totalPages !== page));
       } catch (error) {
         setError(true);
       } finally {
@@ -62,7 +62,7 @@ export default function App() {
     }
   
       getGallery();
-    }, [search, page, totalPages]);
+    }, [search, page]);
 
   
   return (
