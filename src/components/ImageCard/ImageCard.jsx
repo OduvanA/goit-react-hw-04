@@ -1,13 +1,13 @@
 import css from './ImageCard.module.css';
 
-export default function ImageCard({ item: { urls, alt_description }, openModal }) {
+export default function ImageCard({ item, openModal }) {
   const handleClick = () => {
-    openModal(urls.regular);
+    openModal(item);
   };
 
   return (
     <div className={css.container} onClick={handleClick}>
-      <img className={css.image} src={urls.small} alt={alt_description} />
+      <img className={css.image} src={item.urls.small} alt={item.alt_description} />
     </div>
   );
 }

@@ -19,11 +19,11 @@ export default function App() {
   const [showBtn, setShowBtn] = useState(false);
   const [page, setPage] = useState(1);
   const [isOpen, setIsOpen] = useState(false);
-  const [bigImage, setBigImage] = useState("");
-  const [totalPages, setTotalPages] = useState(1);
+  const [item, setItem] = useState("");
+  const [totalPages, setTotalPages] = useState(0);
 
   function openModal(value) {
-    setBigImage(value);
+    setItem(value);
     setIsOpen(true);
   }
 
@@ -51,9 +51,7 @@ export default function App() {
       try {
         setLoading(true);
         const data = await fetchGallery(search, page);
-        setGallery((currentGallery) => {
-          return [...currentGallery, ...data.results];
-        });
+        setGallery((currentGallery) => [...currentGallery, ...data.results]);
         setTotalPages(data.total_pages);
         setShowBtn(totalPages && totalPages !== page);
       } catch (error) {
@@ -75,7 +73,7 @@ export default function App() {
       {error && <ErrorMessage />}
       {showBtn && <LoadMoreBtn handleLoadMore={handleLoadMore} />}
       {isOpen && <ImageModal isOpen={isOpen}
-        imageUrl={bigImage}
+        imageItem={item}
         onRequestClose={closeModal} />}
     </div>
   )

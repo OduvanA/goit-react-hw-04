@@ -2,7 +2,7 @@ import css from './ImageModal.module.css';
 import Modal from 'react-modal';
 import { IoClose } from "react-icons/io5";
 
-export default function ImageModal({isOpen, onRequestClose, imageUrl}) {
+export default function ImageModal({isOpen, onRequestClose, imageItem}) {
   const customStyles = {
     content: {
       top: "50%",
@@ -20,13 +20,13 @@ export default function ImageModal({isOpen, onRequestClose, imageUrl}) {
       <Modal
         isOpen={isOpen}
         onRequestClose={onRequestClose}
-        contentLabel="Image Modal"
+        contentLabel="Gallery Modal"
         shouldCloseOnEsc={true}
         shouldCloseOnOverlayClick={true}
         style={customStyles}
       >
         <button className={css.button} onClick={onRequestClose}><IoClose className={css.icon} /></button>
-        <img className={css.image} src={imageUrl} alt="Large Image" />
+        <img className={css.image} src={imageItem.urls.regular} alt={imageItem.alt_description} />
       </Modal>
     </div>
   );
