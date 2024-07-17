@@ -45,6 +45,7 @@ export default function App() {
 
   useEffect(() => {
     if (search === "") {
+
       return;
     }
     async function getGallery() {
@@ -72,7 +73,7 @@ export default function App() {
       <ImageGallery images={gallery} openModal={openModal} />
       <Loader loader={loading} />
       {error && <ErrorMessage />}
-      {showBtn && <LoadMoreBtn handleLoadMore={handleLoadMore} />}
+      {showBtn && gallery.length > 0 && <LoadMoreBtn handleLoadMore={handleLoadMore} />}
       {isOpen && <ImageModal isOpen={isOpen}
         imageItem={item}
         onRequestClose={closeModal} />}
