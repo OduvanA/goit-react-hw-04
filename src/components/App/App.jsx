@@ -20,7 +20,7 @@ export default function App() {
   const [page, setPage] = useState(1);
   const [isOpen, setIsOpen] = useState(false);
   const [item, setItem] = useState("");
-  const [totalPages, setTotalPages] = useState(0);
+  const [totalPages, setTotalPages] = useState(99);
 
   function openModal(value) {
     setItem(value);
@@ -51,9 +51,10 @@ export default function App() {
       try {
         setLoading(true);
         const data = await fetchGallery(search, page);
-        setTotalPages(data.total_pages);
+        
         setGallery((currentGallery) => [...currentGallery, ...data.results]);
-        setShowBtn(totalPages && (totalPages !== page));
+        setTotalPages(data.total_pages);
+        setShowBtn(totalPages && totalPages !== page);
       } catch (error) {
         setError(true);
       } finally {
